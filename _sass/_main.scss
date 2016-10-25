@@ -1,0 +1,49 @@
+
+body {
+    //padding-top: 65px;
+}
+
+.navbar-brand {
+    padding: 5px 0;
+    font-size: 30px;
+    //font-weight: bold;
+}
+
+.page {
+    margin-top: 20px;
+    min-height: 100vh;
+    background-image: url(/images/earth-background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid red;
+}
+
+.page-1 {
+    background-image: url(/images/backgrounds/earth.png);
+
+    h1 {
+        padding-top: 40vh;
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+}
+
+.page-2 {
+    background-image: url(/images/backgrounds/page2.png);
+    background-size: 100% 100%;
+}
+
+.page-3 {
+    background-image: url(/images/backgrounds/page3.png);
+    background-size: 100% 100%;
+}
+
+.page-4 {
+    background-image: url(/images/backgrounds/page4.png);
+    background-size: 100% 100%;
+}

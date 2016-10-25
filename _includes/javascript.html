@@ -1,0 +1,10 @@
+
+{% for js in site.javascript %}
+<script src="{{ js }}"></script>
+{% endfor %}
+
+{% for js in page.javascript %}
+<script src="{{ js }}"></script>
+{% endfor %}
+
+{% include googleanalytics.html %}

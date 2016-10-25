@@ -1,0 +1,28 @@
+# Site settings
+
+title: "Powering Change @ Brigidine College"
+email: "webmaster@powertracker.com.au"
+
+# Build settings
+
+sass:
+    style: compressed
+
+# Javascript files
+
+javascript:
+    - /js/jquery.min.js
+    - /js/bootstrap.min.js
+
+stylesheets:
+    - /css/style.css
+
+# Define Menu Items for Main and Footer menu
+
+menuitems:
+    - url: /
+      title: "Home"
+    - url: /about/
+      title: "About"
+    - url: /contact/
+      title: "Contact Us"

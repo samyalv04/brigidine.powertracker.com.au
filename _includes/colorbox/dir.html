@@ -1,0 +1,19 @@
+{% assign gallerypath = gallerybase | append: "gallery/" %}
+{% assign gallerytag = gallerybase | replace: "/", "_" | prepend: "g" %}
+
+<ul class="list-inline">
+  {% for item in site.static_files %}
+    {% if item.path contains gallerypath %}
+    <li>
+        <a class="{{ gallerytag }}" href="{{ item.path }}" rel="{{ gallerytag }}">
+            <img src="{{ item.path }}" alt="galley" class="img-thumbnail" style="
+                max-height: 100px;
+                "/>
+        </a>
+    </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+<script>
+    jQuery('a.{{ gallerytag }}').colorbox({ opacity:0.5 , rel:'{{ gallerytag }}' });
+</script>
