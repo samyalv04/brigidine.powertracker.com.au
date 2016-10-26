@@ -22,6 +22,12 @@ stylesheets:
 menuitems:
     - url: /
       title: "Home"
+    - url: /day/
+      title: "Day"
+    - url: /year/
+      title: "Year"
+    - url: /rewards/
+      title: "Rewards"
     - url: /about/
       title: "About"
     - url: /contact/
