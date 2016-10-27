@@ -26,8 +26,8 @@ menuitems:
       title: "Day"
     - url: /year/
       title: "Year"
-    - url: /rewards/
-      title: "Rewards"
+    - url: /target/
+      title: "Target"
     - url: /about/
       title: "About"
     - url: /contact/

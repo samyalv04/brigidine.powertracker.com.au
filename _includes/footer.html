@@ -16,7 +16,7 @@
 
                 {% if site.phone != null %}
                 <p class="footer-phone">
-                    <a href="tel:{{ site.phone | replace: " ", "" }}">
+                    <a href="tel:{{ site.phone | replace: ' ', '' }}">
                         {{ site.phone }}
                     </a>
                 </p>
@@ -33,6 +33,10 @@
                     {% endfor %}
                 </p>
                 {% endif %}
+
+                <a href="https://www.powertracker.com.au/" target="_new">
+                    <img src="/images/powertracker.png" class="img-responsive" />
+                </a>
 
             </div>
             <div class="col-xs-12 col-sm-7">
@@ -53,8 +57,11 @@
     </div>
     <div class="lower row">
         <div class="container">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-6">
                 <i class="glyphicon glyphicon-copyright-mark"></i> {{ site.title }}
+            </div>
+            <div class="col-xs-12 col-sm-6 text-sm-right">
+                Powered by <a href="https://www.powertracker.com.au/" target="_new">Power Tracker</a>
             </div>
         </div>
     </div>

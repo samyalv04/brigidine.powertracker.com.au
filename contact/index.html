@@ -21,8 +21,8 @@ javascript:
 
         {% if site.phone != null %}
         <p class="contact-phone">
-            <a href="tel:{{ site.phone | replace: " ", "" }}">
-                {{ site.phone }}
+            <a href="tel:{{ site.phone | replace: ' ', '' }}">
+            {{ site.phone }}
             </a>
         </p>
         {% endif %}
@@ -39,11 +39,17 @@ javascript:
         </p>
         {% endif %}
 
+        <div style="height: 50px"></div>
+
+        <a href="https://www.powertracker.com.au/" target="_new">
+            <img src="/images/powertracker.png" class="img-responsive" />
+        </a>
+
     </div>
 
     <div class="col-xs-12 col-sm-7 col-sm-pull-5">
 
-        <h2>Fill out the online enquiry form</h2>
+        <h2>Send a message</h2>
 
         <form id="form" method="post" action="http://forms.redronin.com/">
 
