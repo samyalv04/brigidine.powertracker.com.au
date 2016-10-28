@@ -2,39 +2,74 @@
 title: Year
 layout: structure
 bodyclass: page-year
+javascript:
+- "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"
 ---
 
 <div class="container">
-    <div class="row chart">
-        <div class="col-xs-2">
-
-            XX
+    <div class="row">
+        <div class="col-xs-12">
+            <canvas id="mainChart" height="400"></canvas>
+            <script>
+                var ctx = document.getElementById("mainChart");
+                var data = {
+                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                    datasets: [{
+                        label: '# of Values',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                };
+                var options = {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            fontColor: '#FFFFFF'
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                };
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: options
+                });
+            </script>
 
         </div>
-        <div class="col-xs-8">
-            <div class="row chart-small background" style="
-                background-image: url(chart.png);
-                ">
-                <div class="col-xs-12">
-
-                    XX
-
-                </div>
-            </div>
-            <div class="row chart-small background" style="
-                background-image: url(circle.png);
-                ">
-                <div class="col-xs-12">
-
-                    XX
-
-                </div>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 background chart-small">
         </div>
-        <div class="col-xs-2">
-
-            XX
-
+        <div class="col-xs-12 col-sm-3 background chart-small">
+        </div>
+        <div class="col-xs-12 col-sm-3 background chart-small">
+        </div>
+        <div class="col-xs-12 col-sm-3 background chart-small">
         </div>
     </div>
 </div>

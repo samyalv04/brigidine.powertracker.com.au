@@ -21,20 +21,8 @@ javascript:
                         label: '# of Values',
                         data: [12, 19, 3, 5, 2, 3],
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+                            '#66A165',
+                            '#6A422D',
                         ],
                         borderWidth: 1
                     }]
@@ -57,7 +45,7 @@ javascript:
                     }
                 };
                 var myChart = new Chart(ctx, {
-                    type: 'bar',
+                    type: 'line',
                     data: data,
                     options: options
                 });
@@ -66,27 +54,27 @@ javascript:
     </div>
     <div class="row text-center value">
         <div class="col-xs-6 col-sm-2">
-            <span class="icon glyphicon glyphicon-globe"></span>
+            <span class="icon fa fa-tachometer"></span>
             <p class="text">Live Power Right Now</p>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <span class="icon glyphicon glyphicon-globe"></span>
+            <span class="icon fa fa-building-o"></span>
             <p class="text">School Consumption</p>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <span class="icon glyphicon glyphicon-globe"></span>
+            <span class="icon fa fa-leaf"></span>
             <p class="text">Carbon Emissions</p>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <span class="icon glyphicon glyphicon-globe"></span>
+            <span class="icon fa fa-money"></span>
             <p class="text">Money</p>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <span class="icon glyphicon glyphicon-globe"></span>
+            <span class="icon fa fa-sun-o"></span>
             <p class="text">Solar</p>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <span class="icon glyphicon glyphicon-globe"></span>
+            <span class="icon fa glyphicon-globe"></span>
             <p class="text">Target (pie chart)</p>
         </div>
     </div>

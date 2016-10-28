@@ -16,6 +16,7 @@ javascript:
 
 stylesheets:
     - /css/style.css
+    - https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
 
 # Define Menu Items for Main and Footer menu
 
