@@ -59,176 +59,112 @@ javascript:
     </div>
     <div class="row">
 
-        <div class="col-xs-12 col-sm-6">
-            <h4 class="text-center">
-                Consumption Energy Insights
-            </h4>
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 chart-small">
-                    <h5>
-                        Monthly Comparison Chart
-                    </h5>
-                    <canvas id="chart1" height="250"></canvas>
-                    <script>
-                        var ctx = document.getElementById("chart1");
-                        var data = {
-                            datasets: [{
-                                data: [
-                                    11,
-                                    14
-                                ],
-                                backgroundColor: [
-                                    "#503121",
-                                    "#6A422D"
-                                ],
-                                label: 'Monthly Comparison Chart' // for legend
-                            }],
-                            labels: [
-                                "Last",
-                                "This"
-                            ]
-                        };
-                        var options = {
-                            responsive: true,
-                            maintainAspectRatio: false
-                        };
-                        var myDoughnutChart = new Chart(ctx, {
-                            type: 'doughnut',
-                            data: data,
-                            options: options
-                        });
-                    </script>
-                </div>
-                <div class="col-xs-12 col-sm-6 chart-small">
-                    <h5>
-                        48 hour Comparison Chart
-                    </h5>
-                    <canvas id="chart2" height="250"></canvas>
-                    <script>
-                        var ctx = document.getElementById("chart2");
-                        var data = {
-                            datasets: [{
-                                data: [
-                                    11,
-                                    14
-                                ],
-                                backgroundColor: [
-                                    "#503121",
-                                    "#6A422D"
-                                ],
-                                label: 'Monthly Comparison Chart' // for legend
-                            }],
-                            labels: [
-                                "Last",
-                                "This"
-                            ]
-                        };
-                        var options = {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                xAxes: [{
-                                    ticks: {
-                                        beginAtZero:true
-                                    }
-                                }]
-                            }
-                        };
-                        var myDoughnutChart = new Chart(ctx, {
-                            type: 'horizontalBar',
-                            data: data,
-                            options: options
-                        });
-                    </script>
-                </div>
-            </div>
+        <div class="col-xs-12 col-sm-4">
+            <h5 class="text-center">
+                Day Comparison Chart
+            </h5>
+            <canvas id="chart1" height="250"></canvas>
+            <script>
+                var ctx = document.getElementById("chart1");
+                var data = {
+                    datasets: [{
+                        data: [
+                            11,
+                            14
+                        ],
+                        backgroundColor: [
+                            "#503121",
+                            "#6A422D"
+                        ],
+                        label: 'Monthly Comparison Chart' // for legend
+                    }],
+                    labels: [
+                        "Last",
+                        "This"
+                    ]
+                };
+                var options = {
+                    responsive: true,
+                    maintainAspectRatio: false
+                };
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: options
+                });
+            </script>
         </div>
-
-        <div class="col-xs-12 col-sm-6">
-            <h4 class="text-center">
-                Production Energy Insights
-            </h4>
-            <div class="row">
-
-                <div class="col-xs-12 col-sm-6 chart-small">
-                    <h5>
-                        Monthly Comparison Chart
-                    </h5>
-                    <canvas id="chart3" height="250"></canvas>
-                    <script>
-                        var ctx = document.getElementById("chart3");
-                        var data = {
-                            datasets: [{
-                                data: [
-                                    11,
-                                    14
-                                ],
-                                backgroundColor: [
-                                    "#50864D",
-                                    "#66A165"
-                                ],
-                                label: 'Monthly Comparison Chart' // for legend
-                            }],
-                            labels: [
-                                "Last",
-                                "This"
-                            ]
-                        };
-                        var options = {
-                            responsive: true,
-                            maintainAspectRatio: false
-                        };
-                        var myDoughnutChart = new Chart(ctx, {
-                            type: 'doughnut',
-                            data: data,
-                            options: options
-                        });
-                    </script>
-                </div>
-                <div class="col-xs-12 col-sm-6 chart-small">
-                    <h5>
-                        48 hour Comparison Chart
-                    </h5>
-                    <canvas id="chart4" height="250"></canvas>
-                    <script>
-                        var ctx = document.getElementById("chart4");
-                        var data = {
-                            datasets: [{
-                                data: [
-                                    11,
-                                    14
-                                ],
-                                backgroundColor: [
-                                    "#50864D",
-                                    "#66A165"
-                                ],
-                                label: 'Monthly Comparison Chart' // for legend
-                            }],
-                            labels: [
-                                "Last",
-                                "This"
-                            ]
-                        };
-                        var options = {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                xAxes: [{
-                                    ticks: {
-                                        beginAtZero:true
-                                    }
-                                }]
-                            }
-                        };
-                        var myDoughnutChart = new Chart(ctx, {
-                            type: 'horizontalBar',
-                            data: data,
-                            options: options
-                        });
-                    </script>
-                </div>
-            </div>
+        <div class="col-xs-12 col-sm-4">
+            <h5 class="text-center">
+                Weekly Comparison Chart
+            </h5>
+            <canvas id="chart2" height="250"></canvas>
+            <script>
+                var ctx = document.getElementById("chart2");
+                var data = {
+                    datasets: [{
+                        data: [
+                            11,
+                            14
+                        ],
+                        backgroundColor: [
+                            "#503121",
+                            "#6A422D"
+                        ],
+                        label: 'Monthly Comparison Chart' // for legend
+                    }],
+                    labels: [
+                        "Last",
+                        "This"
+                    ]
+                };
+                var options = {
+                    responsive: true,
+                    maintainAspectRatio: false
+                };
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: options
+                });
+            </script>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <h5 class="text-center">
+                Monthly Comparison Chart
+            </h5>
+            <canvas id="chart3" height="250"></canvas>
+            <script>
+                var ctx = document.getElementById("chart3");
+                var data = {
+                    datasets: [{
+                        data: [
+                            11,
+                            14
+                        ],
+                        backgroundColor: [
+                            "#50864D",
+                            "#66A165"
+                        ],
+                        label: 'Monthly Comparison Chart' // for legend
+                    }],
+                    labels: [
+                        "Last",
+                        "This"
+                    ]
+                };
+                var options = {
+                    responsive: true,
+                    maintainAspectRatio: false
+                };
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: options
+                });
+            </script>
         </div>
 
     </div>
 </div>
+
