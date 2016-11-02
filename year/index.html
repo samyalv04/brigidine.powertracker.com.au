@@ -16,18 +16,18 @@ javascript:
                     labels: ["January", "February", "March", "April", "May", "June"],
                     datasets: [
                         {
-                            type: 'bar',
-                            label: 'Bar Component',
-                            data: [10,5,30,45,32,67],
-                            backgroundColor: "rgba(102,161,101,0.4)",
-                            borderColor: "rgba(102,161,101,1)",
+                            type: 'line',
+                            label: 'Target',
+                            data: [10,10,10,10,10,10,10],
+                            //backgroundColor: "rgba(102,161,101,0.4)",
+                            borderColor: "#A0C49E",
                         },
                         {
                             type: 'line',
-                            label: 'Line Component',
-                            data: [6,20,10,56,32,23],
-                            backgroundColor: "rgba(106,66,45,0.4)",
-                            borderColor: "rgba(106,66,45,1)",
+                            label: 'Consumption',
+                            data: [6,20,10,56,32,23,6],
+                            backgroundColor: "rgba(102,161,101,0.4)",
+                            borderColor: "rgba(102,161,101,1)",
                         }
                     ]
                 };
@@ -35,7 +35,8 @@ javascript:
                     responsive: true,
                     maintainAspectRatio: false,
                     legend: {
-                        position: 'right',
+                        //display: false,
+                        //position: 'right',
                         labels: {
                             fontColor: '#FFFFFF'
                         }
@@ -79,8 +80,8 @@ javascript:
                         label: 'Monthly Comparison Chart' // for legend
                     }],
                     labels: [
-                        "Last",
-                        "This"
+                        "Yesterday",
+                        "Previous"
                     ]
                 };
                 var options = {
@@ -114,8 +115,8 @@ javascript:
                         label: 'Monthly Comparison Chart' // for legend
                     }],
                     labels: [
-                        "Last",
-                        "This"
+                        "Last 7 days",
+                        "Previous 7 days"
                     ]
                 };
                 var options = {
@@ -149,8 +150,8 @@ javascript:
                         label: 'Monthly Comparison Chart' // for legend
                     }],
                     labels: [
-                        "Last",
-                        "This"
+                        "Last 30 days",
+                        "Prevous 30 days"
                     ]
                 };
                 var options = {
