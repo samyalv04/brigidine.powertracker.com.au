@@ -127,7 +127,7 @@ javascript:
                             responsive: true,
                             maintainAspectRatio: false,
                             scales: {
-                                yAxes: [{
+                                xAxes: [{
                                     ticks: {
                                         beginAtZero:true
                                     }
@@ -135,7 +135,7 @@ javascript:
                             }
                         };
                         var myDoughnutChart = new Chart(ctx, {
-                            type: 'bar',
+                            type: 'horizontalBar',
                             data: data,
                             options: options
                         });
@@ -213,7 +213,7 @@ javascript:
                             responsive: true,
                             maintainAspectRatio: false,
                             scales: {
-                                yAxes: [{
+                                xAxes: [{
                                     ticks: {
                                         beginAtZero:true
                                     }
@@ -221,7 +221,7 @@ javascript:
                             }
                         };
                         var myDoughnutChart = new Chart(ctx, {
-                            type: 'bar',
+                            type: 'horizontalBar',
                             data: data,
                             options: options
                         });
