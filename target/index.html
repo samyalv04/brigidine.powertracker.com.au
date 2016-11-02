@@ -2,27 +2,57 @@
 title: Target
 layout: structure
 bodyclass: page-target
+javascript:
+- "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"
 ---
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-8 chart-small background">
+        <div class="col-xs-8">
             <h3>
                 Brigidine College Annual Energy Target
             </h3>
-            <p>
+            <p class="big" style="font-size: 24px;">
                 The students at Brigidine College have set out to achieve a substantial energy reduction in the school's energy consumption and environmental impact. This pages represent how they are tracking towards their goals for this year in real time.
             </p>
         </div>
-        <div class="col-xs-4 chart-small background">
+        <div class="col-xs-4">
             <p>
-                Monthly Target Pie Chart (chartjs donut chart)
-                Dark Green: 50864D
+                <canvas id="chart" height="250"></canvas>
+                <script>
+                    var ctx = document.getElementById("chart");
+                    var data = {
+                        datasets: [{
+                            data: [
+                                11,
+                                14
+                            ],
+                            backgroundColor: [
+                                "#50864D",
+                                "#66A165"
+                            ],
+                            label: 'Monthly Target' // for legend
+                        }],
+                        labels: [
+                            "Last",
+                            "This"
+                        ]
+                    };
+                    var options = {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    };
+                    var myDoughnutChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: data,
+                        options: options
+                    });
+                </script>
             </p>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 chart-small background">
+        <div class="col-xs-12">
             5 state time lapse.
             0 - 25% - all 4 trees are showing nice and green
             26 - 50% - three trees green and last one is transparent and brown
