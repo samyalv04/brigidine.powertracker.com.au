@@ -17,41 +17,39 @@ javascript:
             </p>
         </div>
         <div class="col-xs-4">
-            <p>
-                <canvas id="chart" height="250"></canvas>
-                <script>
-                    var ctx = document.getElementById("chart");
-                    var data = {
-                        datasets: [{
-                            data: [
-                                11,
-                                14
-                            ],
-                            backgroundColor: [
-                                "#50864D",
-                                "#66A165"
-                            ],
-                            label: 'Monthly Target' // for legend
-                        }],
-                        labels: [
-                            "Last",
-                            "This"
-                        ]
-                    };
-                    var options = {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        legend: {
-                            display: false
-                        }
-                    };
-                    var myDoughnutChart = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: data,
-                        options: options
-                    });
-                </script>
-            </p>
+            <canvas id="chart" height="250"></canvas>
+            <script>
+                var ctx = document.getElementById("chart");
+                var data = {
+                    datasets: [{
+                        data: [
+                            11,
+                            14
+                        ],
+                        backgroundColor: [
+                            "#50864D",
+                            "#66A165"
+                        ],
+                        label: 'Monthly Target' // for legend
+                    }],
+                    labels: [
+                        "Last",
+                        "This"
+                    ]
+                };
+                var options = {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: false
+                    }
+                };
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: options
+                });
+            </script>
         </div>
     </div>
     <div class="row">

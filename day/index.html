@@ -75,8 +75,39 @@ javascript:
             <p class="text">Solar</p>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <span class="icon fa glyphicon-globe"></span>
-            <p class="text">Target (pie chart)</p>
+            <canvas id="chart" height="200"></canvas>
+            <script>
+                var ctx = document.getElementById("chart");
+                var data = {
+                    datasets: [{
+                        data: [
+                            11,
+                            14
+                        ],
+                        backgroundColor: [
+                            "#50864D",
+                            "#66A165"
+                        ],
+                        label: 'Monthly Target' // for legend
+                    }],
+                    labels: [
+                        "Last",
+                        "This"
+                    ]
+                };
+                var options = {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: false
+                    }
+                };
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: options
+                });
+            </script>
         </div>
     </div>
 </div>
