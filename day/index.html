@@ -8,30 +8,28 @@ javascript:
 
 <div class="container">
     <div class="row chart background" style="
-/*        background-image: url(background.png);*/
-/*        padding-top: 100px;*/
-/*        background-size: 100%;*/
+        /* background-image: url(background.png);*/
+        /* padding-top: 100px;*/
+        /* background-size: 100%;*/
         ">
         <div class="col-xs-12">
             <canvas id="mainChart" height="400"></canvas>
             <script>
                 var ctx = document.getElementById("mainChart");
                 var data = {
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                    labels: ["12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"],
                     datasets: [{
                         label: '# of Values',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            '#66A165',
-                            '#6A422D',
-                        ],
+                        data: [12, 9, 3, 5, 2, 3, 5, 7, 5, 8, 9, 10, 5, 3, 5, 7, 7, 4, 9, 9, 9],
+                        backgroundColor: "rgba(102,161,101,0.4)",
+                        borderColor: "rgba(1102,161,101,1)",
                         borderWidth: 1
                     }]
                 };
                 var options = {
                     responsive: true,
                     maintainAspectRatio: false,
-                     legend: {
+                    legend: {
                         display: false,
                         position: 'right',
                         labels: {
@@ -54,28 +52,43 @@ javascript:
             </script>
         </div>
     </div>
-    <div class="row text-center value">
-        <div class="col-xs-6 col-sm-2">
+    <div class="row text-center readings">
+        <div class="col-xs-6 col-sm-2 reading">
+            <div class="value">
+                12.3<span class="units">kW</span>
+            </div>
             <span class="icon fa fa-tachometer"></span>
             <p class="text">Live Power Right Now</p>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-xs-6 col-sm-2 reading">
+            <div class="value">
+                108<span class="units">kWh</span>
+            </div>
             <span class="icon fa fa-building-o"></span>
             <p class="text">School Consumption</p>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-xs-6 col-sm-2 reading">
+            <div class="value">
+                12<span class="units">kgCO<sub>2</sub></span>
+            </div>
             <span class="icon fa fa-leaf"></span>
             <p class="text">Carbon Emissions</p>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-xs-6 col-sm-2 reading">
+            <div class="value">
+                <span class="units">$</span>1.23
+            </div>
             <span class="icon fa fa-money"></span>
             <p class="text">Money</p>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-xs-6 col-sm-2 reading">
+            <div class="value">
+                <span class="units">coming</span>
+            </div>
             <span class="icon fa fa-sun-o"></span>
             <p class="text">Solar</p>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-xs-6 col-sm-2 reading">
             <canvas id="chart" height="200"></canvas>
             <script>
                 var ctx = document.getElementById("chart");
@@ -86,14 +99,14 @@ javascript:
                             14
                         ],
                         backgroundColor: [
-                            "#50864D",
-                            "#66A165"
+                            "#000000",
+                            "#50864D"
                         ],
                         label: 'Monthly Target' // for legend
                     }],
                     labels: [
-                        "Last",
-                        "This"
+                        "Shortfall",
+                        "Achieved"
                     ]
                 };
                 var options = {

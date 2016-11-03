@@ -54,11 +54,21 @@ javascript:
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <img src="0.png" class="center-block img-responsive" alt="" />
-            <img src="25.png" class="center-block img-responsive" alt="" />
-            <img src="50.png" class="center-block img-responsive" alt="" />
-            <img src="100.png" class="center-block img-responsive" alt="" />
-            <img src="100plus.png" class="center-block img-responsive" alt="" />
+            <img src="0.png" id="tree0" class="trees center-block img-responsive" alt="" />
+            <img src="25.png" id="tree1" class="trees center-block img-responsive" alt="" />
+            <img src="50.png" id="tree2" class="trees center-block img-responsive" alt="" />
+            <img src="100.png" id="tree3" class="trees center-block img-responsive" alt="" />
+            <img src="100plus.png" id="tree4" class="trees center-block img-responsive" alt="" />
+
+            <script>
+                // Show a random trees
+                var rand = Math.floor(Math.random() * 5);
+                console.log(rand);
+                $(".trees").hide();
+                $("#tree"+rand).show();
+            </script>
+
         </div>
     </div>
 </div>
+
