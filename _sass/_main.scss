@@ -16,6 +16,8 @@ body {
     background-size: cover;
 }
 
+
+
 .page-home {
 
     .background {
@@ -35,11 +37,6 @@ body {
 }
 
 .page-day {
-
-    .chart {
-        min-height: 400px;
-        //border: red 1px solid;
-    }
 
     .readings {
         margin-top: 40px;
@@ -70,27 +67,14 @@ body {
 .page-year {
 
     .chart {
-        min-height: 400px;
-        border: red 1px solid;
-    }
-
-    .chart-small {
-        //min-height: 250px;
-        //border: red 1px solid;
+        .canvas {
+            padding-left: 13%;
+            padding-right: 13%;
+        }
     }
 
 }
 
 .page-target {
-
-    .chart {
-        //min-height: 400px;
-        //border: red 1px solid;
-    }
-
-    .chart-small {
-        //min-height: 250px;
-        //border: red 1px solid;
-    }
 
 }

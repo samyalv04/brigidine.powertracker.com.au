@@ -7,7 +7,7 @@ javascript:
 ---
 
 <div class="container">
-    <div class="row">
+    <div class="row chart background">
         <div class="col-xs-12">
             <canvas id="mainChart" height="400"></canvas>
             <script>
@@ -20,7 +20,7 @@ javascript:
                             label: 'Target',
                             data: [40,40,40,40,40,40,40],
                             //backgroundColor: "rgba(102,161,101,0.4)",
-                            borderColor: "#A45E60",
+                            borderColor: "rgba(1102,161,101,1)",
                         },
                         {
                             type: 'line',
@@ -58,6 +58,7 @@ javascript:
 
         </div>
     </div>
+    <div style="min-height: 50px;"></div>
     <div class="row">
         <script>
             // For all charts
@@ -69,11 +70,13 @@ javascript:
                 }
             };
         </script>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-4 chart">
             <h5 class="text-center">
                 Day Comparison Chart
             </h5>
-            <canvas id="chart1" height="250"></canvas>
+            <div class="canvas">
+                <canvas id="chart1" height="250"></canvas>
+            </div>
             <script>
                 var ctx = document.getElementById("chart1");
                 var data = {
@@ -100,11 +103,13 @@ javascript:
                 });
             </script>
         </div>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-4 chart">
             <h5 class="text-center">
                 Week Comparison Chart
             </h5>
-            <canvas id="chart2" height="250"></canvas>
+            <div class="canvas">
+                <canvas id="chart2" height="250"></canvas>
+            </div>
             <script>
                 var ctx = document.getElementById("chart2");
                 var data = {
@@ -131,11 +136,13 @@ javascript:
                 });
             </script>
         </div>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-4 chart">
             <h5 class="text-center">
                 Month Comparison Chart
             </h5>
-            <canvas id="chart3" height="250"></canvas>
+            <div class="canvas">
+                <canvas id="chart3" height="250"></canvas>
+            </div>
             <script>
                 var ctx = document.getElementById("chart3");
                 var data = {
