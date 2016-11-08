@@ -42,18 +42,13 @@ body {
         //margin-bottom: 40px;
         color: #50864D;
 
+        a:hover {
+            text-decoration: none;
+        }
         .value {
             color: white;
             font-size: 48px;
             display: block;
-
-            a {
-
-                &:hover {
-                    text-decoration: none;
-                    color: blue;
-                }
-            }
         }
         .units{
             color: white;
