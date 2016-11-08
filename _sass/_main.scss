@@ -45,6 +45,14 @@ body {
         .value {
             color: white;
             font-size: 48px;
+
+            a {
+
+                &:hover {
+                    text-decoration: none;
+                    color: blue;
+                }
+            }
         }
         .units{
             color: white;
