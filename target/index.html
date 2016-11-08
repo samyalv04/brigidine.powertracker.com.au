@@ -9,14 +9,15 @@ javascript:
 <div class="container">
     <div class="row">
         <div class="col-xs-8">
+            <img src="treetarget.png" class="center-block img-responsive" alt="" />
+        </div>
+        <div class="col-xs-4">
             <h3>
                 Brigidine College Annual Energy Target
             </h3>
             <p class="big" style="font-size: 24px;">
                 The students at Brigidine College have set out to achieve a substantial energy reduction in the school's energy consumption and environmental impact. This pages represent how they are tracking towards their goals for this year in real time.
             </p>
-        </div>
-        <div class="col-xs-4">
             <canvas id="chart" height="250"></canvas>
             <script>
                 var ctx = document.getElementById("chart");
@@ -50,24 +51,6 @@ javascript:
                     options: options
                 });
             </script>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <img src="0.png" id="tree0" class="trees center-block img-responsive" alt="" />
-            <img src="25.png" id="tree1" class="trees center-block img-responsive" alt="" />
-            <img src="50.png" id="tree2" class="trees center-block img-responsive" alt="" />
-            <img src="100.png" id="tree3" class="trees center-block img-responsive" alt="" />
-            <img src="100plus.png" id="tree4" class="trees center-block img-responsive" alt="" />
-
-            <script>
-                // Show a random trees
-                var rand = Math.floor(Math.random() * 5);
-                console.log(rand);
-                $(".trees").hide();
-                $("#tree"+rand).show();
-            </script>
-
         </div>
     </div>
 </div>
