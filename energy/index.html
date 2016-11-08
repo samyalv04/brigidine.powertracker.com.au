@@ -63,16 +63,6 @@ javascript:
             <canvas id="chart" height="200"></canvas>
         </div>
     </div>
-    <div class="row text-center" style="
-        margin-top: 30px;
-        margin-bottom: 30px;
-        ">
-        <div class="col-xs-12">
-            <button id="test1" class="btn btn-default" onclick="getLivePower()">Test Live</button>
-            <button id="test1" class="btn btn-default" onclick="getConsumption('day')">Test Consumption</button>
-            <button id="test1" class="btn btn-default" onclick="drawChart('day')">Test Chart</button>
-        </div>
-    </div>
 </div>
 
 <script>
@@ -197,10 +187,8 @@ javascript:
     }
 
     $( document ).ready(function() {
-        setTimeout(function(){
-            getLivePower();
-            clickButton('day');
-            },2000);
+        getLivePower();
+        clickButton('day');
     });
 
 </script>
