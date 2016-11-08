@@ -65,6 +65,16 @@ body {
         }
     }
 
+    #target {
+        position: absolute;
+        text-align: center;
+        top: 80px;
+        left: 0;
+        right: 0;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
 }
 
 .page-target {

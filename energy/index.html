@@ -10,13 +10,160 @@ javascript:
     <div class="row chart background">
         <div class="col-xs-12">
             <canvas id="mainChart" height="400"></canvas>
-            <script>
+        </div>
+    </div>
+    <div class="row text-center" style="
+        margin-top: 30px;
+        margin-bottom: 30px;
+        ">
+        <div class="col-xs-12">
+            <button id="getdataday" class="getdatabtn btn btn-default" onclick="clickButton('day')">Day</button>
+            <button id="getdataweek" class="getdatabtn btn btn-default" onclick="clickButton('week')">Week</button>
+            <button id="getdatamonth" class="getdatabtn btn btn-default" onclick="clickButton('month')">Month</button>
+        </div>
+    </div>
+    <div class="row text-center readings">
+        <div class="col-xs-6 col-sm-2 reading">
+            <span class="icon fa fa-tachometer"></span>
+            <a class="value" title="Comment goes here">
+                <span id="livepower">-</span><span class="units">kW</span>
+            </a>
+            <p class="text">Live Power Right Now</p>
+        </div>
+        <div class="col-xs-6 col-sm-2 reading">
+            <span class="icon fa fa-building-o"></span>
+            <a class="value" title="Comment goes here">
+                <span id="consumption">-</span><span class="units">kWh</span>
+            </a>
+            <p class="text">School Consumption</p>
+        </div>
+        <div class="col-xs-6 col-sm-2 reading">
+            <span class="icon fa fa-leaf"></span>
+            <a class="value" title="Comment goes here">
+                <span id="greenhouse">-</span><span class="units">kgCO<sub>2</sub></span>
+            </a>
+            <p class="text">Carbon Emissions</p>
+        </div>
+        <div class="col-xs-6 col-sm-2 reading">
+            <span class="icon fa fa-money"></span>
+            <a class="value" title="Comment goes here">
+                <span class="units">$</span><span id="money">-</span>
+            </a>
+            <p class="text">Money</p>
+        </div>
+        <div class="col-xs-6 col-sm-2 reading">
+            <span class="icon fa fa-sun-o"></span>
+            <a class="value" title="Comment goes here">
+                <span class="units">coming</span>
+            </a>
+            <p class="text">Solar</p>
+        </div>
+        <div class="col-xs-6 col-sm-2 reading">
+            <span id="target"><a onclick="getTarget('day')">Loading...</a></span>
+            <canvas id="chart" height="200"></canvas>
+        </div>
+    </div>
+    <div class="row text-center" style="
+        margin-top: 30px;
+        margin-bottom: 30px;
+        ">
+        <div class="col-xs-12">
+            <button id="test1" class="btn btn-default" onclick="getLivePower()">Test Live</button>
+            <button id="test1" class="btn btn-default" onclick="getConsumption('day')">Test Consumption</button>
+            <button id="test1" class="btn btn-default" onclick="drawChart('day')">Test Chart</button>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function clickButton (range) {
+        $(".getdatabtn").removeClass('btn-primary');
+        $("#getdata" + range).addClass('btn-primary');
+        getConsumption(range);
+        getTarget(range)
+        drawChart(range);
+    }
+
+    function getLivePower () {
+        $.ajax({
+            url: "/data/livepower.json",
+            success: function(data){
+                data.value = Math.floor(Math.random() * 100);
+                $("#livepower").text(data.value);
+            }
+        });
+    }
+
+    function getConsumption (range) {
+        $.ajax({
+            url: "/data/consumption-"+range+".json",
+            success: function(data){
+                data.value = Math.floor(Math.random() * 100);
+                $("#consumption").text(data.value);
+                $("#greenhouse").text(Math.floor(data.value * 1.444));
+                $("#money").text(Math.round(data.value * 25)/100);
+            }
+        });
+    }
+
+    function getTarget (range) {
+        $.ajax({
+            url: "/data/target-"+range+".json",
+            success: function(data){
+                data.value = Math.floor(Math.random() * 100);
+                $("#target").text(data.value + "%");
+                var ctx = document.getElementById("chart");
+                var data = {
+                    datasets: [{
+                        data: [
+                            100 - data.value,
+                            data.value
+                        ],
+                        backgroundColor: [
+                            "#000000",
+                            "#50864D"
+                        ],
+                        label: 'Monthly Target' // for legend
+                    }],
+                    labels: [
+                        "Shortfall",
+                        "Achieved"
+                    ]
+                };
+                var options = {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: false
+                    }
+                };
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: options
+                });
+
+            }
+        });
+    }
+
+    function drawChart (range) {
+        $.ajax({
+            url: "/data/chart-"+range+".json",
+            success: function(data){
+                var labels = ["12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
+                var values = [];
+                labels.map(function() {
+                    values.push(Math.floor(5 + Math.random() * 10));
+                });
+                $('#mainChart').replaceWith('<canvas id="mainChart" height="400"></canvas>');
                 var ctx = document.getElementById("mainChart");
                 var data = {
-                    labels: ["12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"],
+                    labels: labels,
                     datasets: [{
                         label: '# of Values',
-                        data: [12, 9, 3, 5, 2, 3, 5, 7, 5, 8, 9, 10, 5, 3, 5, 7, 7, 4, 9, 9, 9],
+                        data: values,
                         backgroundColor: "rgba(102,161,101,0.4)",
                         borderColor: "rgba(1102,161,101,1)",
                         borderWidth: 1
@@ -45,107 +192,15 @@ javascript:
                     data: data,
                     options: options
                 });
-            </script>
-        </div>
-    </div>
-    <div class="row text-center" style="
-        margin-top: 30px;
-        margin-bottom: 30px;
-        ">
-        <div class="col-xs-12">
-            <button id="getdataday" class="getdatabtn btn btn-default btn-primary" onclick="getdata('day')">Day</button>
-            <button id="getdataweek" class="getdatabtn btn btn-default" onclick="getdata('week')">Week</button>
-            <button id="getdatamonth" class="getdatabtn btn btn-default" onclick="getdata('month')">Month</button>
-        </div>
-    </div>
-    <div class="row text-center readings">
-        <div class="col-xs-6 col-sm-2 reading">
-            <span class="icon fa fa-tachometer"></span>
-            <a class="value" title="Comment goes here">
-                12.3<span class="units">kW</span>
-            </a>
-            <p class="text">Live Power Right Now</p>
-        </div>
-        <div class="col-xs-6 col-sm-2 reading">
-            <span class="icon fa fa-building-o"></span>
-            <a class="value" title="Comment goes here">
-                108<span class="units">kWh</span>
-            </a>
-            <p class="text">School Consumption</p>
-        </div>
-        <div class="col-xs-6 col-sm-2 reading">
-            <span class="icon fa fa-leaf"></span>
-            <a class="value" title="Comment goes here">
-                12<span class="units">kgCO<sub>2</sub></span>
-            </a>
-            <p class="text">Carbon Emissions</p>
-        </div>
-        <div class="col-xs-6 col-sm-2 reading">
-            <span class="icon fa fa-money"></span>
-            <a class="value" title="Comment goes here">
-                <span class="units">$</span>1.23
-            </a>
-            <p class="text">Money</p>
-        </div>
-        <div class="col-xs-6 col-sm-2 reading">
-            <span class="icon fa fa-sun-o"></span>
-            <a class="value" title="Comment goes here">
-                <span class="units">coming</span>
-            </a>
-            <p class="text">Solar</p>
-        </div>
-        <div class="col-xs-6 col-sm-2 reading">
-            <span style="
-                position: absolute;
-                text-align: center;
-                top: 80px;
-                left: 0;
-                right: 0;
-                font-size: 24px;
-                font-weight: bold;
-                ">59%</span>
-            <canvas id="chart" height="200"></canvas>
-            <script>
-                var ctx = document.getElementById("chart");
-                var data = {
-                    datasets: [{
-                        data: [
-                            11,
-                            14
-                        ],
-                        backgroundColor: [
-                            "#000000",
-                            "#50864D"
-                        ],
-                        label: 'Monthly Target' // for legend
-                    }],
-                    labels: [
-                        "Shortfall",
-                        "Achieved"
-                    ]
-                };
-                var options = {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false
-                    }
-                };
-                var myDoughnutChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: data,
-                    options: options
-                });
-            </script>
-        </div>
-    </div>
-</div>
-
-<script>
-
-    function getdata (range) {
-        $(".getdatabtn").removeClass('btn-primary');
-        $("#getdata" + range).addClass('btn-primary');
+            }
+        });
     }
+
+    $( document ).ready(function() {
+        setTimeout(function(){
+            getLivePower();
+            clickButton('day');
+            },2000);
+    });
 
 </script>
