@@ -18,39 +18,41 @@ javascript:
             <p class="big" style="font-size: 24px;">
                 The students at Brigidine College have set out to achieve a substantial energy reduction in the school's energy consumption and environmental impact. This pages represent how they are tracking towards their goals for this year in real time.
             </p>
-            <canvas id="chart" height="250"></canvas>
-            <script>
-                var ctx = document.getElementById("chart");
-                var data = {
-                    datasets: [{
-                        data: [
-                            11,
-                            14
-                        ],
-                        backgroundColor: [
-                            "#000000",
-                            "#66A165"
-                        ],
-                        label: 'Monthly Target' // for legend
-                    }],
-                    labels: [
-                        "Last",
-                        "This"
-                    ]
-                };
-                var options = {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false
-                    }
-                };
-                var myDoughnutChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: data,
-                    options: options
-                });
-            </script>
+            <div>
+                <canvas id="chart" width="200" height="200"></canvas>
+                <script>
+                    var ctx = document.getElementById("chart");
+                    var data = {
+                        datasets: [{
+                            data: [
+                                11,
+                                14
+                            ],
+                            backgroundColor: [
+                                "#000000",
+                                "#66A165"
+                            ],
+                            label: 'Monthly Target' // for legend
+                        }],
+                        labels: [
+                            "Last",
+                            "This"
+                        ]
+                    };
+                    var options = {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false
+                        }
+                    };
+                    var myDoughnutChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: data,
+                        options: options
+                    });
+                </script>
+            </div>
         </div>
     </div>
 </div>
