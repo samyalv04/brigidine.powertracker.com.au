@@ -47,38 +47,7 @@ javascript:
                     font-weight: bold;
                     ">59%</span>
                 <canvas id="chart" width="200" height="200"></canvas>
-                <script>
-                    var ctx = document.getElementById("chart");
-                    var data = {
-                        datasets: [{
-                            data: [
-                                41,
-                                59
-                            ],
-                            backgroundColor: [
-                                "#000000",
-                                "#66A165"
-                            ],
-                            label: 'Monthly Target' // for legend
-                        }],
-                        labels: [
-                            "Last",
-                            "This"
-                        ]
-                    };
-                    var options = {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        legend: {
-                            display: false
-                        }
-                    };
-                    var myDoughnutChart = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: data,
-                        options: options
-                    });
-                </script>
+
             </div>
         </div>
     </div>
@@ -91,5 +60,36 @@ javascript:
     $("#chartcenter").text(rand + "%");
     $("#treetext").text("Target " + rand + "%");
     $("#treeshade").height(rand + "%");
+
+    var ctx = document.getElementById("chart");
+    var data = {
+        datasets: [{
+            data: [
+                100 - rand,
+                rand
+            ],
+            backgroundColor: [
+                "#000000",
+                "#66A165"
+            ],
+            label: 'Monthly Target' // for legend
+        }],
+        labels: [
+            "Last",
+            "This"
+        ]
+    };
+    var options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            display: false
+        }
+    };
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: options
+    });
 
 </script>
