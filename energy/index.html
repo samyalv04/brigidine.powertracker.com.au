@@ -53,10 +53,9 @@ javascript:
         margin-bottom: 30px;
         ">
         <div class="col-xs-12">
-            <button class="btn btn-primary" >Day</button>
-            <button class="btn btn-default" >Week</button>
-            <button class="btn btn-default" >Month</button>
-            <button class="btn btn-default" >Year</button>
+            <button id="getdataday" class="getdatabtn btn btn-default btn-primary" onclick="getdata('day')">Day</button>
+            <button id="getdataweek" class="getdatabtn btn btn-default" onclick="getdata('week')">Week</button>
+            <button id="getdatamonth" class="getdatabtn btn btn-default" onclick="getdata('month')">Month</button>
         </div>
     </div>
     <div class="row text-center readings">
@@ -141,3 +140,12 @@ javascript:
         </div>
     </div>
 </div>
+
+<script>
+
+    function getdata (range) {
+        $(".getdatabtn").removeClass('btn-primary');
+        $("#getdata" + range).addClass('btn-primary');
+    }
+
+</script>
