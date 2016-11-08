@@ -24,10 +24,8 @@ stylesheets:
 menuitems:
     - url: /
       title: "Home"
-    - url: /day/
-      title: "Day"
-    - url: /year/
-      title: "Year"
+    - url: /energy/
+      title: "Energy"
     - url: /target/
       title: "Target"
     - url: /about/
