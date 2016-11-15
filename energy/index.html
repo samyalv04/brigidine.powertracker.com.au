@@ -7,7 +7,7 @@ javascript:
 ---
 
 <div class="container">
-    <div class="row chart background">
+    <div class="row chart">
         <div class="col-xs-12">
             <canvas id="mainChart" height="400"></canvas>
         </div>
@@ -26,9 +26,9 @@ javascript:
         <div class="col-xs-6 col-sm-2 reading">
             <span class="icon fa fa-tachometer"></span>
             <a class="value" title="Comment goes here">
-                <span id="livepower">-</span><span class="units">kW</span>
+                <span id="livepower">-</span><span class="units">kWh</span>
             </a>
-            <p class="text">Live Power Right Now</p>
+            <p class="text">Power Used Thus Far</p>
         </div>
         <div class="col-xs-6 col-sm-2 reading">
             <span class="icon fa fa-building-o"></span>
@@ -45,6 +45,13 @@ javascript:
             <p class="text">Carbon Emissions</p>
         </div>
         <div class="col-xs-6 col-sm-2 reading">
+            <span class="icon fa fa-sun-o"></span>
+            <a class="value" title="Comment goes here">
+                <span class="units">coming</span>
+            </a>
+            <p class="text">Solar Power Generation</p>
+        </div>
+        <div class="col-xs-6 col-sm-2 reading">
             <span class="icon fa fa-money"></span>
             <a class="value" title="Comment goes here">
                 <span class="units">$</span><span id="money">-</span>
@@ -52,15 +59,11 @@ javascript:
             <p class="text">Money</p>
         </div>
         <div class="col-xs-6 col-sm-2 reading">
-            <span class="icon fa fa-sun-o"></span>
-            <a class="value" title="Comment goes here">
-                <span class="units">coming</span>
-            </a>
-            <p class="text">Solar</p>
-        </div>
-        <div class="col-xs-6 col-sm-2 reading">
             <span id="target"><a onclick="getTarget('day')">Loading...</a></span>
-            <canvas id="chart" height="200"></canvas>
+            <div>
+                <canvas id="chart" height="200"></canvas>
+            </div>
+            <p class="text">CO<sub>2</sub> Reductions</p>
         </div>
     </div>
 </div>
@@ -90,6 +93,7 @@ javascript:
             url: "/data/consumption-"+range+".json",
             success: function(data){
                 data.value = Math.floor(Math.random() * 100);
+                $("#livepower").text(data.value);
                 $("#consumption").text(data.value);
                 $("#greenhouse").text(Math.floor(data.value * 1.444));
                 $("#money").text(Math.round(data.value * 25)/100);
@@ -173,6 +177,10 @@ javascript:
                         yAxes: [{
                             ticks: {
                                 beginAtZero:true
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Energy (kWh)'
                             }
                         }]
                     }
@@ -182,12 +190,13 @@ javascript:
                     data: data,
                     options: options
                 });
+
             }
         });
     }
 
     $( document ).ready(function() {
-        getLivePower();
+        //getLivePower();
         clickButton('day');
     });
 
