@@ -28,6 +28,8 @@ menuitems:
       title: "Energy"
     - url: /target/
       title: "Target"
+    - url: /leaderboard/
+      title: "Leaderboard"
     - url: /about/
       title: "About"
     - url: /contact/
