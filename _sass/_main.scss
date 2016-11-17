@@ -102,8 +102,21 @@ body {
                 font-size: 48px;
             }
         }
+        .viewall {
+            margin-top: 50px;
+        }
     }
     .schools {
+        .bus {
+            padding: 50px;
+            text-align: center;
+            background: transparent;
+            color: $brand-primary;
+            border: 2px solid $brand-primary;
+            border-radius: 50%;
+            -webkit-transition: all .3s ease-out 0s;
+            transition: all .3s ease-out 0s;
+        }
         .score {
             margin-top: 50px;
             .score-amount {
@@ -116,9 +129,6 @@ body {
                 font-size: 18px;
                 font-weight: bold;
             }
-        }
-        .viewall {
-            margin-top: 50px;
         }
     }
 }
