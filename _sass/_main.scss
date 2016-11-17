@@ -84,8 +84,11 @@ body {
 .page-about {
     .about-icons {
         font-size: 62px;
-        a {
+        a{
             color: white;
+            &:hover {
+                color: $brand-primary;
+            }
         }
     }
 
