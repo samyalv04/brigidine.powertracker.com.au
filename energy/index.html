@@ -26,9 +26,9 @@ javascript:
         <div class="col-xs-6 col-sm-2 reading">
             <span class="icon fa fa-tachometer"></span>
             <a class="value" title="Comment goes here">
-                <span id="livepower">-</span><span class="units">kWh</span>
+                <span id="livepower">-</span><span class="units">kW</span>
             </a>
-            <p class="text">Power Used Thus Far</p>
+            <p class="text">Live Power Now</p>
         </div>
         <div class="col-xs-6 col-sm-2 reading">
             <span class="icon fa fa-building-o"></span>
@@ -93,7 +93,6 @@ javascript:
             url: "/data/consumption-"+range+".json",
             success: function(data){
                 data.value = Math.floor(Math.random() * 100);
-                $("#livepower").text(data.value);
                 $("#consumption").text(data.value);
                 $("#greenhouse").text(Math.floor(data.value * 1.444));
                 $("#money").text(Math.round(data.value * 25)/100);
@@ -196,7 +195,7 @@ javascript:
     }
 
     $( document ).ready(function() {
-        //getLivePower();
+        getLivePower();
         clickButton('day');
     });
 
