@@ -103,7 +103,24 @@ body {
             }
         }
     }
-    .schools {}
+    .schools {
+        .score {
+            margin-top: 50px;
+            .score-amount {
+                text-align: center;
+                font-size: 48px;
+                font-weight: bold;
+            }
+            .score-about {
+                text-align: center;
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+        .viewall {
+            margin-top: 50px;
+        }
+    }
 }
 
 .page-about {
