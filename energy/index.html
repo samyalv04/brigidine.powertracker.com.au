@@ -19,28 +19,28 @@ javascript:
         <div class="col-xs-12">
             <button id="getdataday" class="getdatabtn btn btn-default" onclick="clickButton('day')">Day</button>
             <button id="getdataweek" class="getdatabtn btn btn-default" onclick="clickButton('week')">Week</button>
-            <button id="getdatamonth" class="getdatabtn btn btn-default" onclick="clickButton('month')">Month</button>
+            <button id="getdatamonthto" class="getdatabtn btn btn-default" onclick="clickButton('monthto')">Month</button>
         </div>
     </div>
     <div class="row text-center readings">
         <div class="col-xs-6 col-sm-2 reading">
             <span class="icon fa fa-tachometer"></span>
             <a class="value" title="Comment goes here">
-                <span id="livepower">-</span><span class="units">kW</span>
+                <span id="livepowervalue">-</span><span id="livepowerunits" class="units"></span>
             </a>
             <p class="text">Live Power Now</p>
         </div>
         <div class="col-xs-6 col-sm-2 reading">
             <span class="icon fa fa-building-o"></span>
             <a class="value" title="Comment goes here">
-                <span id="consumption">-</span><span class="units">kWh</span>
+                <span id="consumptionvalue">-</span><span id="consumptionunits" class="units"></span>
             </a>
             <p class="text">School Consumption</p>
         </div>
         <div class="col-xs-6 col-sm-2 reading">
             <span class="icon fa fa-leaf"></span>
             <a class="value" title="Comment goes here">
-                <span id="greenhouse">-</span><span class="units">kgCO<sub>2</sub></span>
+                <span id="greenhousevalue">-</span><span id="greenhouseunits" class="units"></span>
             </a>
             <p class="text">Carbon Emissions</p>
         </div>
@@ -74,28 +74,39 @@ javascript:
         $(".getdatabtn").removeClass('btn-primary');
         $("#getdata" + range).addClass('btn-primary');
         getConsumption(range);
-        getTarget(range)
+        //getTarget(range)
         drawChart(range);
     }
 
     function getLivePower () {
+        var url = "https://www.dev.powertracker.com.au/query/sys/sensor/t0x0115000078/power/public";
+        console.log('getLivePower', url);
         $.ajax({
-            url: "/data/livepower.json",
+            url: url,
+            dataType: 'json',
             success: function(data){
-                data.value = Math.floor(Math.random() * 100);
-                $("#livepower").text(data.value);
+                console.log('getLivePower', data);
+                $("#livepowervalue").text(data.power.eng);
+                var prefix = data.power.prefix ? data.power.prefix+"W" : "W";
+                $("#livepowerunits").text(prefix);
             }
         });
     }
 
     function getConsumption (range) {
+        var url = "https://www.dev.powertracker.com.au/query/sys/range/t0x0115000078/power/"+range+"/now/public";
+        console.log('getConsumption', url);
         $.ajax({
-            url: "/data/consumption-"+range+".json",
+            url: url,
+            dataType: 'json',
             success: function(data){
-                data.value = Math.floor(Math.random() * 100);
-                $("#consumption").text(data.value);
-                $("#greenhouse").text(Math.floor(data.value * 1.444));
-                $("#money").text(Math.round(data.value * 25)/100);
+                console.log('getConsumption', data);
+                var power = data.power.hourly;
+                $("#consumptionvalue").text(Math.floor(power));
+                $("#consumptionunits").text("Wh");
+                $("#greenhousevalue").text(Math.floor(power * 1.444));
+                $("#greenhouseunits").html("gCO<sub>2</sub>");
+                $("#money").text(Math.round(power * 25)/100);
             }
         });
     }
@@ -142,21 +153,20 @@ javascript:
     }
 
     function drawChart (range) {
+        var url = "https://www.dev.powertracker.com.au/query/sys/chart/t0x0115000078/power/hourly/"+range+"/now/public";
+        console.log('drawChart', url);
         $.ajax({
-            url: "/data/chart-"+range+".json",
-            success: function(data){
-                var labels = ["12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
-                var values = [];
-                labels.map(function() {
-                    values.push(Math.floor(5 + Math.random() * 10));
-                });
+            url: url,
+            dataType: 'json',
+            success: function(response){
+                console.log('drawChart', response);
                 $('#mainChart').replaceWith('<canvas id="mainChart" height="400"></canvas>');
                 var ctx = document.getElementById("mainChart");
                 var data = {
-                    labels: labels,
+                    labels: response["labels"],
                     datasets: [{
                         label: '# of Values',
-                        data: values,
+                        data: response["values"],
                         backgroundColor: "rgba(102,161,101,0.4)",
                         borderColor: "rgba(1102,161,101,1)",
                         borderWidth: 1
@@ -179,7 +189,7 @@ javascript:
                             },
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Energy (kWh)'
+                                labelString: 'Energy (Wh)'
                             }
                         }]
                     }
