@@ -70,16 +70,18 @@ javascript:
 
 <script>
 
+    var serial = 't0x0115000078';
+
     function clickButton (range) {
         $(".getdatabtn").removeClass('btn-primary');
         $("#getdata" + range).addClass('btn-primary');
         getConsumption(range);
-        //getTarget(range)
+        getTarget(range)
         drawChart(range);
     }
 
     function getLivePower () {
-        var url = "https://www.dev.powertracker.com.au/query/sys/sensor/t0x0115000078/power/public";
+        var url = "https://www.dev.powertracker.com.au/query/sys/sensor/"+serial+"/power/public";
         console.log('getLivePower', url);
         $.ajax({
             url: url,
@@ -94,19 +96,26 @@ javascript:
     }
 
     function getConsumption (range) {
-        var url = "https://www.dev.powertracker.com.au/query/sys/range/t0x0115000078/power/"+range+"/now/public";
-        console.log('getConsumption', url);
+        var url = "https://www.dev.powertracker.com.au/query/sys/range/"+serial+"/power/"+range+"/now/public";
+        //console.log('getConsumption', url);
         $.ajax({
             url: url,
             dataType: 'json',
             success: function(data){
                 console.log('getConsumption', data);
-                var power = data.power.hourly;
-                $("#consumptionvalue").text(Math.floor(power));
-                $("#consumptionunits").text("Wh");
-                $("#greenhousevalue").text(Math.floor(power * 1.444));
-                $("#greenhouseunits").html("gCO<sub>2</sub>");
-                $("#money").text(Math.round(power * 25)/100);
+                var eng;
+
+                eng = engineeringNotation(data.power.hourly, 'Wh');
+                console.log(eng);
+                $("#consumptionvalue").text(eng.value);
+                $("#consumptionunits").text(eng.units);
+
+                eng = engineeringWeight(data.power.hourly * 1.444, 'CO<sub>2</sub>');
+                console.log(eng);
+                $("#greenhousevalue").text(eng.value);
+                $("#greenhouseunits").html(eng.units);
+
+                $("#money").text(Math.round(data.power.hourly / 4000, 2));
             }
         });
     }
@@ -153,13 +162,13 @@ javascript:
     }
 
     function drawChart (range) {
-        var url = "https://www.dev.powertracker.com.au/query/sys/chart/t0x0115000078/power/hourly/"+range+"/now/public";
-        console.log('drawChart', url);
+        var url = "https://www.dev.powertracker.com.au/query/sys/chart/"+serial+"/power/hourly/"+range+"/now/public";
+        //console.log('drawChart', url);
         $.ajax({
             url: url,
             dataType: 'json',
             success: function(response){
-                console.log('drawChart', response);
+                //console.log('drawChart', response);
                 $('#mainChart').replaceWith('<canvas id="mainChart" height="400"></canvas>');
                 var ctx = document.getElementById("mainChart");
                 var data = {
@@ -203,6 +212,59 @@ javascript:
             }
         });
     }
+
+    function engineeringNotation (number, units) {
+        if (number == null) {
+            return {
+                'value': '-',
+                'units': ''
+            }
+        }
+        var exp = 0;
+        while (number > 1000) {
+            exp++;
+            number = number / 1000;
+        }
+        if (number > 100) {
+            number = number.toFixed(0);
+        } else if (number > 10) {
+            number = number.toFixed(1);
+        } else {
+            number = number.toFixed(2);
+        }
+        var prefixes = {0:"",1:"k",2:"M",3:"G"};
+        return {
+            'value': number,
+            'units': prefixes[exp] + units
+        };
+    }
+
+    function engineeringWeight (grams, units) {
+        if (grams == null) {
+            return {
+                'value': '-',
+                'units': ''
+            }
+        }
+        var exp = 0;
+        while (grams > 1000) {
+            exp++;
+            grams = grams / 1000;
+        }
+        if (grams > 100) {
+            grams = grams.toFixed(0);
+        } else if (grams > 10) {
+            grams = grams.toFixed(1);
+        } else {
+            grams = grams.toFixed(2);
+        }
+        var prefixes = {0:"g",1:"kg",2:"T",3:"kT"};
+        return {
+            'value': grams,
+            'units': prefixes[exp] + units
+        };
+    }
+
 
     $( document ).ready(function() {
         getLivePower();
