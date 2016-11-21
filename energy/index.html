@@ -81,13 +81,13 @@ javascript:
     }
 
     function getLivePower () {
-        var url = "https://www.dev.powertracker.com.au/query/sys/sensor/"+serial+"/power/public";
-        console.log('getLivePower', url);
+        var url = "https://www.powertracker.com.au/query/sys/sensor/"+serial+"/power/public";
+        //console.log('getLivePower', url);
         $.ajax({
             url: url,
             dataType: 'json',
             success: function(data){
-                console.log('getLivePower', data);
+                //console.log('getLivePower', data);
                 $("#livepowervalue").text(data.power.eng);
                 var prefix = data.power.prefix ? data.power.prefix+"W" : "W";
                 $("#livepowerunits").text(prefix);
@@ -96,25 +96,22 @@ javascript:
     }
 
     function getConsumption (range) {
-        var url = "https://www.dev.powertracker.com.au/query/sys/range/"+serial+"/power/"+range+"/now/public";
+        var url = "https://www.powertracker.com.au/query/sys/range/"+serial+"/power/"+range+"/now/public";
         //console.log('getConsumption', url);
         $.ajax({
             url: url,
             dataType: 'json',
             success: function(data){
-                console.log('getConsumption', data);
+                //console.log('getConsumption', data);
                 var eng;
-
                 eng = engineeringNotation(data.power.hourly, 'Wh');
                 console.log(eng);
                 $("#consumptionvalue").text(eng.value);
                 $("#consumptionunits").text(eng.units);
-
                 eng = engineeringWeight(data.power.hourly * 1.444, 'CO<sub>2</sub>');
                 console.log(eng);
                 $("#greenhousevalue").text(eng.value);
                 $("#greenhouseunits").html(eng.units);
-
                 $("#money").text(Math.round(data.power.hourly / 4000, 2));
             }
         });
@@ -162,7 +159,7 @@ javascript:
     }
 
     function drawChart (range) {
-        var url = "https://www.dev.powertracker.com.au/query/sys/chart/"+serial+"/power/hourly/"+range+"/now/public";
+        var url = "https://www.powertracker.com.au/query/sys/chart/"+serial+"/power/hourly/"+range+"/now/public";
         //console.log('drawChart', url);
         $.ajax({
             url: url,
