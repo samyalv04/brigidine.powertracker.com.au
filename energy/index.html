@@ -88,9 +88,9 @@ javascript:
             dataType: 'json',
             success: function(data){
                 console.log('getLivePower', data);
-                $("#livepowervalue").text(data.power.eng);
-                var prefix = data.power.prefix ? data.power.prefix+"W" : "W";
-                $("#livepowerunits").text(prefix);
+                eng = engineeringNotation(data.power.value, 'W');
+                $("#livepowervalue").text(eng.value);
+                $("#livepowerunits").text(eng.units);
             }
         });
     }
