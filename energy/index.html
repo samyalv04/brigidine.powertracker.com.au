@@ -76,18 +76,18 @@ javascript:
         $(".getdatabtn").removeClass('btn-primary');
         $("#getdata" + range).addClass('btn-primary');
         getConsumption(range);
-        getTarget(range)
+        //getTarget(range)
         drawChart(range);
     }
 
     function getLivePower () {
         var url = "https://www.powertracker.com.au/query/sys/sensor/"+serial+"/power/public";
-        //console.log('getLivePower', url);
+        console.log('getLivePower', url);
         $.ajax({
             url: url,
             dataType: 'json',
             success: function(data){
-                //console.log('getLivePower', data);
+                console.log('getLivePower', data);
                 $("#livepowervalue").text(data.power.eng);
                 var prefix = data.power.prefix ? data.power.prefix+"W" : "W";
                 $("#livepowerunits").text(prefix);
@@ -97,12 +97,12 @@ javascript:
 
     function getConsumption (range) {
         var url = "https://www.powertracker.com.au/query/sys/range/"+serial+"/power/"+range+"/now/public";
-        //console.log('getConsumption', url);
+        console.log('getConsumption', url);
         $.ajax({
             url: url,
             dataType: 'json',
             success: function(data){
-                //console.log('getConsumption', data);
+                console.log('getConsumption', data);
                 var eng;
                 eng = engineeringNotation(data.power.hourly, 'Wh');
                 console.log(eng);
@@ -160,12 +160,19 @@ javascript:
 
     function drawChart (range) {
         var url = "https://www.powertracker.com.au/query/sys/chart/"+serial+"/power/hourly/"+range+"/now/public";
-        //console.log('drawChart', url);
+        console.log('drawChart', url);
         $.ajax({
             url: url,
             dataType: 'json',
             success: function(response){
-                //console.log('drawChart', response);
+
+                // remove null values as they cause a chart error
+                for (var i in response.values) {
+                    //console.log('loop', i, response.values[i]);
+                    if (response.values[i] == null) response.values[i] = 0;
+                }
+
+                console.log('drawChart', response);
                 $('#mainChart').replaceWith('<canvas id="mainChart" height="400"></canvas>');
                 var ctx = document.getElementById("mainChart");
                 var data = {
