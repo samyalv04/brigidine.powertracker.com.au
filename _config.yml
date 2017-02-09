@@ -26,11 +26,11 @@ menuitems:
       title: "Home"
     - url: /energy/
       title: "Energy"
+    - url: /about/
+      title: "About"
     - url: /target/
       title: "Target"
     - url: /leaderboard/
       title: "Leaderboard"
-    - url: /about/
-      title: "About"
     - url: /contact/
       title: "Contact Us"
