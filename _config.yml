@@ -32,5 +32,7 @@ menuitems:
       title: "Target"
     - url: /leaderboard/
       title: "Leaderboard"
+    - url: https://energygame.com.au
+      title: "Register"
     - url: /contact/
       title: "Contact Us"
