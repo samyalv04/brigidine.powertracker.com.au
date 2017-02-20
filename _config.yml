@@ -24,15 +24,17 @@ stylesheets:
 menuitems:
     - url: /
       title: "Home"
-    - url: /energy/
-      title: "Energy"
     - url: /about/
       title: "About"
+    - url: /energy/
+      title: "Energy"
     - url: /target/
       title: "Target"
     - url: /leaderboard/
       title: "Leaderboard"
     - url: https://energygame.com.au
       title: "Register"
+      class: "btn btn-primary"
+      target: _blank
     - url: /contact/
       title: "Contact Us"
