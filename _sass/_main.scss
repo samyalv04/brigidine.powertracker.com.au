@@ -13,6 +13,19 @@ body {
     //font-weight: bold;
 }
 
+@media (min-width: 768px) {
+    .navbar-nav>li {
+        padding-top: 20px;
+        &>a {
+            padding-top: 25px;
+            padding-bottom: 25px;
+            &.btn-primary {
+                color: white;
+            }
+        }
+    }
+}
+
 .background {
     //background-image: url(/images/earth.png);
     background-image: url(/images/earthmoving.gif);
