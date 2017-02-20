@@ -32,7 +32,7 @@ menuitems:
       title: "Target"
     - url: /leaderboard/
       title: "Leaderboard"
-    - url: https://energygame.com.au
+    - url: https://energygame.com.au/user/register
       title: "Register"
       class: "btn btn-primary"
       target: _blank
