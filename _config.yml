@@ -34,7 +34,6 @@ menuitems:
       title: "Leaderboard"
     - url: https://energygame.com.au/user/register
       title: "Register"
-      class: "btn btn-primary"
       target: _blank
     - url: /contact/
       title: "Contact Us"
