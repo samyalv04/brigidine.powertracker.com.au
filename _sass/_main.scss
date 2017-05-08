@@ -125,7 +125,7 @@ body {
             text-align: center;
             background: transparent;
             color: $brand-primary;
-            border: 2px solid transparent;
+            border: 2px solid $brand-primary;
             border-radius: 50%;
             -webkit-transition: all .3s ease-out 0s;
             transition: all .3s ease-out 0s;
